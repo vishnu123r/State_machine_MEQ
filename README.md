@@ -2,18 +2,18 @@
 This program connects to a server over a socket and requests data to to determine the structure of a randomly created state machine. The state machine is represented by a dictionary, where the keys are the states and the values are dictionaries that represent the transitions. The program determines the structure of the state machine, and visualizes the resulting state machine using Graphviz.
 
 ## Requirements
-Python 3.x
-Graphviz
+- Python 3.x
+- Graphviz
 
 ## Installation
-Clone the repository: git clone https://github.com/vishnu123r/State_machine_MEQ.git
-Install the required packages: pip install -r requirements.txt
+1. Clone the repository: git clone https://github.com/vishnu123r/State_machine_MEQ.git
+2. Install the required packages: pip install -r requirements.txt
 
 ## Usage
-Open a terminal and navigate to the directory where the program is located.
-Run the program: python app.py
-Wait for the program to finish running.
-The resulting state machine diagram will be saved to the state_machine.gv file in the same directory.
+1. Open a terminal and navigate to the directory where the program is located.
+2. Run the program: python app.py
+3. Wait for the program to finish running.
+4. The resulting state machine diagram will be saved to the state_machine.gv file in the same directory.
 
 ## Functionality
 The program does the following:
