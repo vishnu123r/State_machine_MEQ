@@ -1,5 +1,4 @@
 # App to determine the state machine structure
-
 This program connects to a server over a socket and requests data to to determine the structure of a randomly created state machine. The state machine is represented by a dictionary, where the keys are the states and the values are dictionaries that represent the transitions. The program determines the structure of the state machine, and visualizes the resulting state machine using Graphviz.
 
 ## Requirements
@@ -12,7 +11,7 @@ Install the required packages: pip install -r requirements.txt
 
 ## Usage
 Open a terminal and navigate to the directory where the program is located.
-Run the program: python main.py
+Run the program: python app.py
 Wait for the program to finish running.
 The resulting state machine diagram will be saved to the state_machine.gv file in the same directory.
 
