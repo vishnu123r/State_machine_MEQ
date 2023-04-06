@@ -1,0 +1,1 @@
+### App to determine the state machine structure
