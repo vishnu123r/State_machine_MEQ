@@ -1,7 +1,8 @@
 from graphviz import Digraph
+import random
 
 def count_key_dict(dct):
-    "This returns the number of keys in a dicitonary"
+    "This returns the number of keys in a nested dictionary"
     count = len(dct)
     for key, value in dct.items():
         if isinstance(value, dict):
@@ -15,8 +16,7 @@ def count_key_dict(dct):
 def state_machine_viz(state_machine):
     graph = Digraph()
     graph.attr(rankdir='LR')
-
-    
+   
     state_list = list(state_machine.keys())
     for state in state_list:
         graph.node(state)
@@ -60,6 +60,21 @@ if __name__ == "__main__":
         "Y": {"1": "V", "2": "W", "3": "X"},
         "Z": {"": "A" }
     }
-
-    print(count_key_dict(state_machine))
-    state_machine_viz(state_machine)
+    
+    import copy
+    
+    state_machine = {}
+    state_list = [chr(i) for i in range(ord('A'), ord('Z')+1)]
+    for state in state_list:
+        state_machine[state] = {}
+    
+    #state_machine['A'].update({'1':'B'})
+    state_machine.setdefault('A',{}).setdefault('1','B')
+    state_machine.setdefault('C',{}).setdefault('2','B')
+    state_machine.setdefault('C',{}).setdefault('1','A')
+    print(state_machine)
+   
+    
+    
+    # print(count_key_dict(state_machine))
+    # state_machine_viz(state_machine)
