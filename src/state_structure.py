@@ -117,10 +117,3 @@ class StateMachineStructure:
 
             # Save and open the state_machine.gv file
             self._visualize_state_machine(self.state_machine)
-
-if __name__ == '__main__':
-    HOST = '20.28.230.252'
-    PORT = 65432
-
-    sm = StateMachineStructure(HOST, PORT)
-    sm.run()
