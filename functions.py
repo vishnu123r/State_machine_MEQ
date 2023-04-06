@@ -13,7 +13,10 @@ def count_key_dict(dct):
                     count += count_key_dict(item)
     return count
 
-def state_machine_viz(state_machine):
+def visualise_state_machine(state_machine):
+    """
+    This function visulises the state machine dictionary as a directed graph.
+    """
     graph = Digraph()
     graph.attr(rankdir='LR')
    
@@ -28,6 +31,28 @@ def state_machine_viz(state_machine):
             graph.edge(start_state, end_state, label=action)
     
     graph.render('state_machine.gv', view=True)
+
+def request_strategy_1():
+    """
+    This strategy will always choose a random transition.
+    """
+    request = str(random.randint(1,3))
+    return request
+
+def request_strategy_2(state_machine, new_state):
+    """
+    This strategy will always choose a transition that has not been explored yet for a given state. 
+    However, if all transitions have been explored, it will choose a random transition.
+    """
+    
+    POSSIBLE_TRANSITIONS = {'1', '2', '3'}
+    explored_transitions = set(state_machine[new_state].keys())
+    unexplored_transitions = POSSIBLE_TRANSITIONS - explored_transitions
+    if len(unexplored_transitions) == 0:
+        request = str(random.randint(1,3)) 
+    else:
+        request = random.sample(unexplored_transitions, 1)[0]
+    return request
 
 if __name__ == "__main__":
         
@@ -61,20 +86,7 @@ if __name__ == "__main__":
         "Z": {"": "A" }
     }
     
-    import copy
-    
-    state_machine = {}
-    state_list = [chr(i) for i in range(ord('A'), ord('Z')+1)]
-    for state in state_list:
-        state_machine[state] = {}
-    
-    #state_machine['A'].update({'1':'B'})
-    state_machine.setdefault('A',{}).setdefault('1','B')
-    state_machine.setdefault('C',{}).setdefault('2','B')
-    state_machine.setdefault('C',{}).setdefault('1','A')
-    print(state_machine)
-   
-    
+     
     
     # print(count_key_dict(state_machine))
     # state_machine_viz(state_machine)
