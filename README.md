@@ -30,7 +30,7 @@ The program does the following:
 - Visualizes the resulting state machine using Graphviz and saves the diagram to a file.
 - Prints a message indicating the number of requests made and the file where the state machine diagram is saved.
 
-![alt text](https://github.com/vishnu123r/State_machine_MEQ/state_machine_structure.gv.pdf?raw=true)
+![alt text](https://github.com/vishnu123r/State_machine_MEQ/state_machine_structure.gv.pdf)
 
 ## Conclusion
 This program demonstrates how to use sockets and dictionaries in Python to build a state machine from data received over a network connection. The resulting state machine is visualized using Graphviz, making it easy to understand and analyze.
