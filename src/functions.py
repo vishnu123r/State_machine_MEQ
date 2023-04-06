@@ -23,13 +23,11 @@ def state_machine_viz(state_machine):
     
     for start_state in state_machine:
         transition_dict = state_machine[start_state]
-        for action in ['1', '2', '3']:
+        for action in list(transition_dict.keys()):
             end_state = transition_dict[action]
             graph.edge(start_state, end_state, label=action)
     
     graph.render('state_machine.gv', view=True)
-
-
 
 if __name__ == "__main__":
         
@@ -60,9 +58,8 @@ if __name__ == "__main__":
         "W": {"1": "P", "2": "Q", "3": "R"},
         "X": {"1": "S", "2": "T", "3": "U"},
         "Y": {"1": "V", "2": "W", "3": "X"},
-        "Z": {"1": "Y", "2": "Z", "3": "A"}
+        "Z": {"": "A" }
     }
 
-
+    print(count_key_dict(state_machine))
     state_machine_viz(state_machine)
-        
