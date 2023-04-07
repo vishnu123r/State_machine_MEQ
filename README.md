@@ -8,6 +8,7 @@ This program connects to a server over a socket and requests data to to determin
 ## Installation
 1. Clone the repository: git clone https://github.com/vishnu123r/State_machine_MEQ.git
 2. Install the required packages: pip install -r requirements.txt
+3. Install Graphviz 8.0.1 (https://graphviz.org/download/) and and add it to the PATH environment variable
 
 ## Usage
 1. Open a terminal and navigate to the directory where the program is located.
