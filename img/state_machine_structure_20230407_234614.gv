@@ -1,0 +1,105 @@
+digraph {
+	rankdir=LR
+	A
+	B
+	C
+	D
+	E
+	F
+	G
+	H
+	I
+	J
+	K
+	L
+	M
+	N
+	O
+	P
+	Q
+	R
+	S
+	T
+	U
+	V
+	W
+	X
+	Y
+	Z
+	A -> D [label=1]
+	A -> I [label=3]
+	A -> B [label=2]
+	B -> I [label=3]
+	B -> E [label=1]
+	B -> G [label=2]
+	C -> F [label=1]
+	C -> S [label=2]
+	C -> X [label=3]
+	D -> R [label=2]
+	D -> D [label=1]
+	D -> F [label=3]
+	E -> Q [label=1]
+	E -> Z [label=3]
+	E -> S [label=2]
+	F -> P [label=2]
+	F -> M [label=3]
+	F -> E [label=1]
+	G -> D [label=3]
+	G -> B [label=2]
+	G -> K [label=1]
+	H -> Q [label=3]
+	H -> H [label=1]
+	H -> Y [label=2]
+	I -> M [label=2]
+	I -> P [label=1]
+	I -> U [label=3]
+	J -> G [label=3]
+	J -> T [label=1]
+	J -> H [label=2]
+	K -> P [label=3]
+	K -> K [label=1]
+	K -> Y [label=2]
+	L -> N [label=2]
+	L -> H [label=3]
+	L -> X [label=1]
+	M -> E [label=1]
+	M -> U [label=2]
+	M -> L [label=3]
+	N -> M [label=1]
+	N -> G [label=3]
+	N -> W [label=2]
+	O -> B [label=1]
+	O -> H [label=2]
+	O -> G [label=3]
+	P -> S [label=2]
+	P -> R [label=1]
+	P -> H [label=3]
+	Q -> Y [label=3]
+	Q -> P [label=1]
+	Q -> V [label=2]
+	R -> O [label=1]
+	R -> C [label=3]
+	R -> D [label=2]
+	S -> N [label=1]
+	S -> G [label=3]
+	S -> T [label=2]
+	T -> J [label=3]
+	T -> X [label=1]
+	T -> L [label=2]
+	U -> Y [label=2]
+	U -> S [label=3]
+	U -> X [label=1]
+	V -> T [label=1]
+	V -> X [label=2]
+	V -> D [label=3]
+	W -> U [label=2]
+	W -> W [label=1]
+	W -> Z [label=3]
+	X -> C [label=2]
+	X -> O [label=1]
+	X -> B [label=3]
+	Y -> E [label=3]
+	Y -> T [label=2]
+	Y -> S [label=1]
+	Z -> A [label=""]
+}
