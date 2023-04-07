@@ -22,14 +22,15 @@ The program does the following:
 - Imports necessary libraries and functions.
 - Initializes constants and creates the initial state machine dictionary.
 - Connects to the server using a socket and receives the initial state.
-- Loops while the number of keys in the state machine is less than the maximum number of keys.
+- Loops while the number of keys in the state machine dicitonary is less than the maximum number of possible keys.
 - Uses one of two request strategies to send a request to the server and receive a response.
 - Adds the new transition to the state machine dictionary.
 - Updates the current state based on the response.
 - If the current state is the terminal state, the state returns to A.
 - If the current state is not a valid state, error is raised.
-- Visualizes the resulting state machine using Graphviz and saves the diagram to a file.
 - Prints a message indicating the number of requests made and the file where the state machine diagram is saved.
+- Prints the state machine structure dictionary
+- Visualizes the resulting state machine using Graphviz and saves the diagram to a file.
 
 ## Conclusion
 This program demonstrates how to use sockets and dictionaries in Python to determine the state machine structure from data received over a network connection. The resulting state machine is visualized using Graphviz, making it easy to understand and analyze.
