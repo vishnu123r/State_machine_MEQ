@@ -21,6 +21,14 @@ class StateMachineStructure:
         self.state_machine = {state:{} for state in self.state_list}
         self.state_machine.setdefault(self.terminal_state, {}).setdefault('', 'A')
 
+    def _validate_inputs(self):
+        if self.host == None:
+            raise ValueError("Please provide the host name")
+        if not isinstance(self.host, str):
+            raise TypeError("Host name should be a string")
+        if not isinstance(self.port, int):
+            raise TypeError("Port number should be an integer")
+    
     def _count_key_dict(self, dictionary):
         "This returns the number of keys in a nested dictionary"
         count = len(dictionary)
@@ -79,6 +87,7 @@ class StateMachineStructure:
         """
         This function connects to the server and returns the client socket object.
         """
+        self._validate_inputs()
         try:
             client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
             client.connect((self.host, self.port))
