@@ -11,7 +11,7 @@ class StateMachineStructure:
         self.port = port
         self.terminal_state = terminal_state
         
-        # Determine the number of states and transitions
+        # Determine the maximum possible states and transitions
         self.state_list = [chr(i) for i in range(ord('A'), ord('Z')+1)]
         self.number_of_states = len(self.state_list)
         self.number_of_transitions = (self.number_of_states-1)*3
@@ -75,7 +75,7 @@ class StateMachineStructure:
                 end_state = transition_dict[action]
                 graph.edge(start_state, end_state, label=action)
         
-        #Add time stamp to the file name
+
         timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
         file_name = f'img/state_machine_structure_{timestamp}.gv'
         try:
@@ -161,6 +161,5 @@ class StateMachineStructure:
             print(f"The structure has been determined after {no_of_requests} requests. Please refer to the state_machine.gv saved in the img folder file for the state machine diagram.")          
             print("The state machine dictionary is:")
             pprint.pprint(self.state_machine)
-        
-            # Save and open the state_machine.gv file
+
             self._visualize_state_machine(self.state_machine)
