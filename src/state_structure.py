@@ -6,7 +6,7 @@ import datetime
 import sys
 
 class StateMachineStructure:
-    def __init__(self, host, port, terminal_state = 'Z'):
+    def __init__(self, host: str, port: int, terminal_state = 'Z'):
         self.host = host
         self.port = port
         self.terminal_state = terminal_state
@@ -21,7 +21,7 @@ class StateMachineStructure:
         self.state_machine = {state:{} for state in self.state_list}
         self.state_machine.setdefault(self.terminal_state, {}).setdefault('', 'A')
 
-    def _validate_inputs(self):
+    def _validate_inputs(self) -> None:
         if self.host == None:
             raise ValueError("Please provide the host name")
         if not isinstance(self.host, str):
@@ -29,7 +29,7 @@ class StateMachineStructure:
         if not isinstance(self.port, int):
             raise TypeError("Port number should be an integer")
     
-    def _count_key_dict(self, dictionary):
+    def _count_key_dict(self, dictionary: dict) -> int:
         "This returns the number of keys in a nested dictionary"
         count = len(dictionary)
         for key, value in dictionary.items():
@@ -38,13 +38,13 @@ class StateMachineStructure:
        
         return count
 
-    def _request_strategy_1(self):
+    def _request_strategy_1(self) -> str:
         """
         This strategy will choose a random transition.
         """
         return str(random.randint(1,3))
     
-    def _request_strategy_2(self, state_machine, new_state):
+    def _request_strategy_2(self, state_machine: dict, new_state: str) -> str:
         """
         This strategy will always choose a transition that has not been explored yet for a given state. 
         However, if all transitions have been explored, it will choose a random transition.
@@ -58,7 +58,7 @@ class StateMachineStructure:
         
         return random.sample(sorted(unexplored_transitions), 1)[0]
 
-    def _visualize_state_machine(self, state_machine):
+    def _visualize_state_machine(self, state_machine: dict) -> None:
         """
         This function visualises the state machine dictionary as a directed graph.
         """
@@ -96,7 +96,7 @@ class StateMachineStructure:
             print(f"Error: {e}")
             sys.exit(f"Please check if the server is running on {self.host}:{self.port}")
     
-    def _send_request(self, client, request_strategy, new_state):
+    def _send_request(self, client: socket.socket, request_strategy: int, new_state: str) -> tuple[str,str]:
         """
         send request to server and return response
         """
@@ -109,7 +109,7 @@ class StateMachineStructure:
         
         return request, response
     
-    def _update_state_machine(self, new_state, request, response):
+    def _update_state_machine(self, new_state: str, request: str, response: str) -> str: 
         """
         Updates state machine dictionary with the new state, request and response
         """
@@ -117,7 +117,7 @@ class StateMachineStructure:
         
         return response
     
-    def _handle_terminal_state(self, client, new_state ):
+    def _handle_terminal_state(self, client: socket.socket, new_state: str) -> str:
         
         """     
         Handles the terminal state 'Z' by sending a new line character and receiving the new state. Ensures that the new state is 'A'.
@@ -131,14 +131,14 @@ class StateMachineStructure:
         return new_state
     
     
-    def _handle_invalid_state(self, new_state):
+    def _handle_invalid_state(self, new_state: str) -> None:
         """
         Raises error if the new state received from the server is not in the state list.
         """
         if new_state not in self.state_list:
             raise ValueError(f"Invalid state received from server - {new_state}")
       
-    def run(self, request_strategy = 2):
+    def run(self, request_strategy = 2) -> None:
         with self._connect_to_server() as client:
             print(f"Connected to {self.host}:{self.port}")
             new_state = client.recv(1024).decode().strip()
