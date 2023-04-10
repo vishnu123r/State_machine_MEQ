@@ -56,7 +56,7 @@ class StateMachineStructure:
         if len(unexplored_transitions) == 0:
             return str(random.randint(1,3))
         
-        return random.sample(unexplored_transitions, 1)[0]
+        return random.sample(sorted(unexplored_transitions), 1)[0]
 
     def _visualize_state_machine(self, state_machine):
         """
@@ -96,11 +96,14 @@ class StateMachineStructure:
             print(f"Error: {e}")
             sys.exit(f"Please check if the server is running on {self.host}:{self.port}")
     
-    def _send_request(self, client, request_func, new_state):
+    def _send_request(self, client, request_strategy, new_state):
         """
         send request to server and return response
         """
-        request = request_func(self.state_machine, new_state)
+        if request_strategy == 1:
+            request = self._request_strategy_1()
+        elif request_strategy == 2:
+            request = self._request_strategy_2(self.state_machine, new_state)
         client.sendall(request.encode() + b'\n')
         response = client.recv(1024).decode().strip()
         
@@ -150,8 +153,7 @@ class StateMachineStructure:
                 comp = 100*(self._count_key_dict(self.state_machine))/self.max_keys_state_machine
                 print("\r%d%% completed" % comp, end='', flush=True)
 
-                request_func = self._request_strategy_1 if request_strategy == 1 else self._request_strategy_2
-                request, response = self._send_request(client, request_func, new_state)
+                request, response = self._send_request(client, request_strategy, new_state)
                 new_state = self._update_state_machine(new_state, request, response)
                 new_state = self._handle_terminal_state(client, new_state)
                 self._handle_invalid_state(new_state)
