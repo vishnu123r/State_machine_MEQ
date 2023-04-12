@@ -33,7 +33,7 @@ The program does the following:
 - Visualizes the resulting state machine using Graphviz and saves the diagram to a file.
 
 ## Expected results
-[![Expected results][img/Screenshot 2023-04-12_161957.png]]
+![Expected results](C:\Vishnu\creative_projects\state_machine_meq\img\Screenshot 2023-04-12_161957.png)
 
 ## Conclusion
 This program demonstrates how to use sockets and dictionaries in Python to determine the state machine structure from data received over a network connection. The resulting state machine is visualized using Graphviz, making it easy to understand and analyze.
